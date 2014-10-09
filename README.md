@@ -9,6 +9,11 @@ The SharedChain offers developers and businesses unprecedented access to blockch
 * Encrypted Object Storage
 * SubChain Technology
 * Bitcoin Integration
+* 
+
+The Power of Sharing
+--------------------
+There is a strongly demonstrated need to utilize decentralized blockhain technology for non-monetary applications.
  
 Programmable Transactions
 -------------------------
@@ -16,7 +21,7 @@ Powerful smart transaction support comes from Rubric technologies.
 
 Encrypted Object Storage
 ------------------------
-Large objects can be stored and securely related to entries in the blockchain.
+Large objects can be stored and securely related to entries in the shared blockchain.
 
 SubChain Technology
 -------------------
@@ -24,4 +29,4 @@ An unlimited number of sub-chains can be supported on top of the SharedChains. T
 
 Bitcoin Integration
 -------------------
-All payments in the SharedChain are made in BTC.
+Bitcoin can be used to pay for any transaction in the SharedChain.
