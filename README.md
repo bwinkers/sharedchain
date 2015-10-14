@@ -9,7 +9,7 @@ Almost since inception people have been trying to take advantage of various feat
 What if there was a way to implement those features and actually benefit Bitcoin?
 What if complex rules could be implemented and enforced by the blockchain?
 What if you could store objects of any size on the blockchain?
-What if the costs were a fraction of using Bitcoin?
+What if the costs were a frac1tion of using Bitcoin?
 
 
 All of that and more is the promise of the SharedChain. 
