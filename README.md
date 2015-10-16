@@ -25,7 +25,6 @@ Proof of Work
 Decentralized object registry hash
 Social Proof
 
-
 The Power of Sharing
 --------------------
 There is a strongly demonstrated need to utilize decentralized blockhain technology for non-monetary applications.
@@ -45,3 +44,4 @@ An unlimited number of sub-chains can be supported on top of the SharedChains. T
 Bitcoin Integration
 -------------------
 Bitcoin can be used to pay for any transaction in the SharedChain.
+
