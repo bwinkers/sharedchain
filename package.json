@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/bwinkers/sharedchain",
   "dependencies": {
+    "bluebird": "^2.10.2",
     "koala": "^1.0.0"
   }
 }
