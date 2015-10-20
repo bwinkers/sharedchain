@@ -1,0 +1,26 @@
+{
+  "name": "sharedchain",
+  "version": "0.1.0",
+  "description": "Community supported Blockhain",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "tests/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bwinkers/sharedchain.git"
+  },
+  "keywords": [
+    "blockchain",
+    "sharedchain"
+  ],
+  "author": "Brian Winkers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bwinkers/sharedchain/issues"
+  },
+  "homepage": "https://github.com/bwinkers/sharedchain"
+}
