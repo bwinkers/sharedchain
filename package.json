@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/bwinkers/sharedchain/issues"
   },
-  "homepage": "https://github.com/bwinkers/sharedchain"
+  "homepage": "https://github.com/bwinkers/sharedchain",
+  "dependencies": {
+    "koala": "^1.0.0"
+  }
 }
