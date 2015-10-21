@@ -28,7 +28,7 @@ function addRouteDirs(directories) {
 
 /**
  * Add a single route to the app.
- * 
+ *
  * @param route
  */
 function addRoute(route) {
