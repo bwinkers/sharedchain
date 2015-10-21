@@ -1,0 +1,31 @@
+{
+  "name": "activerules",
+  "version": "0.1.0",
+  "description": "Sensible app development with Koa.js",
+  "main": "lib",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bwinkers/activerules.git"
+  },
+  "keywords": [
+    "activerules",
+    "blockchain",
+    "sharedchain"
+  ],
+  "author": "Brian Winkers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bwinkers/activerules/issues"
+  },
+  "homepage": "https://github.com/bwinkers/activerules",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "koala": "^1.0.0"
+  }
+}
