@@ -9,11 +9,10 @@
  * @type {exports|module.exports}
  */
 var app = require('./koaApp');
-var route = require('./route')
+//var route = require('./route');
 
 /** Return the active app, this can be used to create a listening server */
 exports.activeApp = activeApp;
-/**
 exports.addRouteDirs = addRouteDirs;
 exports.addRoute = addRoute;
 

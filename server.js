@@ -3,21 +3,29 @@
  */
 "use strict";
 
-/**
- * Include the ActiveRules module
- * This provides an opinionated means to create a Koa app.
- * @type {exports|module.exports}
- */
-var ar = require('./activerules');
+var koa = require('koa');
+var koaws = require('koa-ws');
+var app = koa();
 
-/**
- * Define a directory that has the ActiveRule Configs
- */
-ar.addRoute('/config');
+var options = {
+    serveClientFile: true,
+    clientFilePath: '/koaws.js',
+    heartbeat: true,
+    heartbeatInterval: 5000
+};
 
-var app = ar.activeApp();
+app.use(function *(){
+    console.log('test2');
+    this.body = 'Hello World';
+});
 
-/**
- * Define the port you want the app to listen on
- */
-app.listen(8888);
+app.use(koaws(app, options));
+
+app.listen(3000);
+
+app.ws.register('hello', function* () {
+    this.result('world!');
+});
+
+
+{"jsonrpc":"2.0","method":"hello"}
