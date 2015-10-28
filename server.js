@@ -15,8 +15,9 @@ var options = {
 };
 
 app.use(function *(){
-    console.log('test2');
+
     this.body = 'Hello World';
+    console.log('test2');
 });
 
 app.use(koaws(app, options));
@@ -26,6 +27,3 @@ app.listen(3000);
 app.ws.register('hello', function* () {
     this.result('world!');
 });
-
-
-{"jsonrpc":"2.0","method":"hello"}
