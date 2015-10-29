@@ -27,7 +27,9 @@
     "bluebird": "^2.10.2",
     "express": "^4.13.3",
     "koa": "^1.1.1",
+    "koa-static-cache": "^3.1.2",
     "koa-ws": "^1.0.1",
+    "koa.io": "0.0.3",
     "koala": "^1.0.0"
   }
 }
