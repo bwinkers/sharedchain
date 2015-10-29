@@ -1,95 +1,79 @@
-/**
- * SharedChain Chainlink
- *
- * A Node.js application supporting the SharedChain Protocol
- * http://sharedchain.com/protocol
- */
-"use strict"
-
-var staticCache = require('koa-static-cache');
-var koa = require('koa.io');
-var router = require('koa-router')();
-var path = require('path');
-var fs = require('fs');
-
-// Create a basic Koa app
-var app = koa();
-
-// Set the port this Chainlink will run on
+// Setup basic express server
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('../..')(server);
 var port = process.env.PORT || 3000;
 
-// Routing
-app.use(staticCache(path.join(__dirname, 'public')));
-
-// Homepage route
-router.get('/', function *(next) {
-    this.body = fs.createReadStream(path.join(__dirname, 'public/index.html'));
-    this.type = 'html';
-});
-
-// Use our REST API and HTML Content routes
-app.use(router.routes())
-    .use(router.allowedMethods());
-
-// Start Listenting
-// Don't use WebSockets prior to this
-app.listen(port, function () {
+server.listen(port, function () {
     console.log('Server listening at port %d', port);
 });
 
-// Chainlinks
+// Routing
+app.use(express.static(__dirname + '/public'));
 
-// chainlinks which are currently connected to the SharedChaint
-var chainlinks = {};
-var numChainlinks = 0;
+// Chatroom
 
-// middleware for connect and disconnect
-app.io.use(function* chainlinkLeft(next) {
-    // on connect
-    console.log('chainlink connected');
-    console.log(this.headers)
-    yield* next;
-    // on disconnect
-    if (this.addedChainlink) {
-        delete chainlinks[this.chainlink];
-        --numChainlinks;
+// usernames which are currently connected to the chat
+var usernames = {};
+var numUsers = 0;
 
-        // echo globally that this client has left
-        this.broadcast.emit('chainlink left', {
-            chainlink: this.chainlink,
-            numChainlinks: numChainlinks
+io.on('connection', function (socket) {
+    var addedUser = false;
+
+    // when the client emits 'new message', this listens and executes
+    socket.on('new message', function (data) {
+        // we tell the client to execute 'new message'
+        socket.broadcast.emit('new message', {
+            username: socket.username,
+            message: data
         });
-    }
+    });
+
+    // when the client emits 'add user', this listens and executes
+    socket.on('add user', function (username) {
+        // we store the username in the socket session for this client
+        socket.username = username;
+        // add the client's username to the global list
+        usernames[username] = username;
+        ++numUsers;
+        addedUser = true;
+        socket.emit('login', {
+            numUsers: numUsers
+        });
+        // echo globally (all clients) that a person has connected
+        socket.broadcast.emit('user joined', {
+            username: socket.username,
+            numUsers: numUsers
+        });
+    });
+
+    // when the client emits 'typing', we broadcast it to others
+    socket.on('typing', function () {
+        socket.broadcast.emit('typing', {
+            username: socket.username
+        });
+    });
+
+    // when the client emits 'stop typing', we broadcast it to others
+    socket.on('stop typing', function () {
+        socket.broadcast.emit('stop typing', {
+            username: socket.username
+        });
+    });
+
+    // when the user disconnects.. perform this
+    socket.on('disconnect', function () {
+        // remove the username from global usernames list
+        if (addedUser) {
+            delete usernames[socket.username];
+            --numUsers;
+
+            // echo globally that this client has left
+            socket.broadcast.emit('user left', {
+                username: socket.username,
+                numUsers: numUsers
+            });
+        }
+    });
 });
-
-
-/**
- * router for socket event
- */
-
-app.io.route('add chainlink', function* (next, chainlink) {
-    // we store the chainlink in the socket session for this client
-    this.chainlink = chainlink;
-    // add the client's chainlink to the global list
-    chainlinks[chainlink] = chainlink;
-    ++numChainlinks;
-    this.addedChainlink = true;
-    this.emit('login', {
-        numChainlinks: numChainlinks
-    });
-
-    // echo globally (all clients) that a chainlink has connected
-    this.broadcast.emit('chainlink joined', {
-        chainlink: this.chainlink,
-        numChainlinks: numChainlinks
-    });
-});
-
-// when the client emits 'new message', this listens and executes
-app.io.route('new message', function* (next, message) {
-    // we tell the client to execute 'new message'
-    this.broadcast.emit('new message', {
-        chainlink: this.chainlink,
-        message: message
-    });
-})
