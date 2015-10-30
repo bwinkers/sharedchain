@@ -24,17 +24,7 @@
   },
   "homepage": "https://github.com/bwinkers/sharedchain",
   "dependencies": {
-    "bluebird": "^2.10.2",
-    "express": "^4.13.3",
-    "install": "^0.2.2",
     "koa": "^1.1.1",
-    "koa-router": "^5.2.3",
-    "koa-static-cache": "^3.1.2",
-    "koa-ws": "^1.0.1",
-    "koa.io": "0.0.3",
-    "koala": "^1.0.0",
-    "npm": "^3.3.9",
-    "websocket": "^1.0.22",
     "ws": "^0.8.0"
   }
 }
