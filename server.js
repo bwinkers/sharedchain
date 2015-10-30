@@ -15,8 +15,15 @@ const websockify = require('koa-websocket')
 
 const app = websockify(koa())
 
-app.use(route.get('/', function* (next) {
-    this.body = 'Heello'
+const co = require('co')
+const views = require('co-views')
+
+var render = views('views', {
+    map: { html: 'nunjucks' }
+});
+
+app.use(route.get('/', function* () {
+    this.body = yield render('home.html', {testa:5})
 }))
 
 // Note it's app.ws.use and not app.use
