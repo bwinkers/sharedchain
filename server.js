@@ -20,7 +20,7 @@ const app = websockify(koa())
 // View Templates
 const co = require('co')
 const views = require('co-views')
-var render = views('views', {
+var render = views('./views', {
     map: { html: 'nunjucks' }
 });
 
@@ -36,7 +36,7 @@ app.use(staticCache(path.join(__dirname, 'static'), {
 
 // REST and Website Routes
 app.use(route.get('/', function* () {
-    this.body = yield render('home.html', {testa:5})
+    this.body = yield render('page/home.html')
 }))
 
 // WebSocket Routes
