@@ -5,19 +5,33 @@
     <title>{% if html_title %}
         {{ html_title }}
         {% else %}
-        SharedChain
+        SharedChain - a chain of public trust
         {% endif %}
     </title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     {{ html_css }}
     <script type="text/javascript" src='/main.js'></script>
+
+    <!-- Bring in React and single-page-react dependencies as globals -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.1/react.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.1/JSXTransformer.js"></script>
+    <script src="single-page-react.js"></script>
+
+    <!-- Set which DOM element to insert React components into -->
+    <script>
+        React.Router.routedElement = document.body //or whatever element you prefer
+    </script>
+
+    <!-- Bring in the home react component -->
+    <script src="home.jsx" type="text/jsx"></script>
+
     {{ html_js }}
 </head>
 
-<body id="{{ html_body_id }}" class="{{ html_body_class }}">
-{% block body %}
-Help me, I have no body!
-{% endblock %}
-{{ html_js_footer }}
+<body>
+This text is replaced by routed React components. For example, when the url
+ends with #home?prop1=customValue, this text will be replaced by a div whose
+content is 'customValue'
 </body>
+{{ html_js_footer }}
 </html>
