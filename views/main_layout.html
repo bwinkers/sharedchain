@@ -2,36 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>{% if html_title %}
-        {{ html_title }}
-        {% else %}
-        SharedChain - a chain of public trust
-        {% endif %}
-    </title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-    {{ html_css }}
-    <script type="text/javascript" src='/main.js'></script>
+    <title>SharedChain - a chain of public trust</title>
+
+    <script type="text/javascript" src='main.js'></script>
 
     <!-- Bring in React and single-page-react dependencies as globals -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.1/react.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.1/JSXTransformer.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/react/0.12.0/JSXTransformer.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/react/0.12.0/react-with-addons.js'></script>
     <script src="single-page-react.js"></script>
+
+    <!-- JS JOSE/Crypto library -->
+    <script language="JavaScript" type="text/javascript"
+            src="http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js">
+    </script>
 
     <!-- Set which DOM element to insert React components into -->
     <script>
         React.Router.routedElement = document.body //or whatever element you prefer
     </script>
 
-    <!-- Bring in the home react component -->
-    <script src="home.jsx" type="text/jsx"></script>
+    <!-- Bring in the react components -->
+    <script src="sharedchain.jsx" type="text/jsx"></script>
 
-    {{ html_js }}
 </head>
 
 <body>
 This text is replaced by routed React components. For example, when the url
 ends with #home?prop1=customValue, this text will be replaced by a div whose
 content is 'customValue'
+
+<h1>React Lightbox</h1>
+<h3>Example 1: basic usage</h3>
+<div id='react-canvas'></div>
+<p>The element in LightboxTrigger will get 'openLightbox' property and bind it to onClick event automatically.</p>
+<p>You can also trigger the 'openLightbox' method in whatever way you like.</p>
+<script type="text/jsx">
+    /** @jsx React.DOM */
+
+    React.renderComponent(
+            <Lightbox>
+                <LightboxTrigger>
+                    <a href='#'>Click me to open!</a>
+                </LightboxTrigger>
+                <LightboxModal>
+                    <div>
+                        <h1>This is the basic usage!</h1>
+                        <p>Good luck :D</p>
+                    </div>
+                </LightboxModal>
+            </Lightbox>,
+            document.getElementById('react-canvas')
+    );
+</script>
 </body>
-{{ html_js_footer }}
 </html>

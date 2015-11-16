@@ -27,7 +27,7 @@ var render = views('./views', {
 // Static files
 const path = require('path')
 const staticCache = require('koa-static-cache')
-app.use(staticCache(path.join(__dirname, 'static'), {
+app.use(staticCache(path.join(__dirname, '/static'), {
     maxAge: 365 * 24 * 60 * 60
 }))
 
