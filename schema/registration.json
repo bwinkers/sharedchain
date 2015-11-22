@@ -1,0 +1,13 @@
+{
+  "required": {
+    "publicKey": ""
+  },
+  "properties": {
+    "publicKey": "",
+    "email": "",
+    "facebook": "",
+    "twitter": "",
+    "github": ""
+  }
+
+}

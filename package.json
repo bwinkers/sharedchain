@@ -33,5 +33,9 @@
     "koa-websocket": "^1.1.0",
     "nunjucks": "^2.1.0",
     "ws": "^0.8.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "qunitjs": "^1.20.0"
   }
 }

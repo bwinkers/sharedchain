@@ -4,12 +4,16 @@
     <meta charset="utf-8" />
     <title>SharedChain - a chain of public trust</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
     <script type="text/javascript" src='main.js'></script>
 
     <!-- Bring in React and single-page-react dependencies as globals -->
     <script src='//cdnjs.cloudflare.com/ajax/libs/react/0.12.0/JSXTransformer.js'></script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/react/0.12.0/react-with-addons.js'></script>
     <script src="single-page-react.js"></script>
+
+    <script src="kbpgp/kbpgp-2.0.8.js"></script>
 
     <!-- JS JOSE/Crypto library -->
     <script language="JavaScript" type="text/javascript"
@@ -27,32 +31,12 @@
 </head>
 
 <body>
-This text is replaced by routed React components. For example, when the url
-ends with #home?prop1=customValue, this text will be replaced by a div whose
-content is 'customValue'
 
-<h1>React Lightbox</h1>
-<h3>Example 1: basic usage</h3>
-<div id='react-canvas'></div>
-<p>The element in LightboxTrigger will get 'openLightbox' property and bind it to onClick event automatically.</p>
-<p>You can also trigger the 'openLightbox' method in whatever way you like.</p>
-<script type="text/jsx">
-    /** @jsx React.DOM */
+<form id="createCL">
+    Password: <input type="text" name="password" value="">
+    <br>
+    Indentifier: <input type="text" name="identifier" value="">
+</form>
 
-    React.renderComponent(
-            <Lightbox>
-                <LightboxTrigger>
-                    <a href='#'>Click me to open!</a>
-                </LightboxTrigger>
-                <LightboxModal>
-                    <div>
-                        <h1>This is the basic usage!</h1>
-                        <p>Good luck :D</p>
-                    </div>
-                </LightboxModal>
-            </Lightbox>,
-            document.getElementById('react-canvas')
-    );
-</script>
 </body>
 </html>
