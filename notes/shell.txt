@@ -1,0 +1,7 @@
+sudo docker run --name mongodb -p 27017:27017 -v $HOME/sandbox/mongo_data:/data/db --restart=always -d mongo
+
+sudo docker run -d --name neo4j --restart=always -v $HOME/sandbox/neo4j-data:/data -p 8474:7474 neo4j/neo4j
+
+sudo docker run --name redis -v $HOME/sandbox/redis-data:/data --restart=always -d redis redis-server --appendonly yes
+
+
