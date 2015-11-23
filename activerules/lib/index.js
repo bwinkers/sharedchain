@@ -5,11 +5,10 @@
 "use strict";
 
 /**
- * Use the AR koaApp module to get a Koala app
+ * Use the AR koaApp module to get a Koa app
  * @type {exports|module.exports}
  */
-var app = require('./koaApp');
-//var route = require('./route');
+var koaApp = require('./koaApp');
 
 /** Return the active app, this can be used to create a listening server */
 exports.activeApp = activeApp;
@@ -31,7 +30,7 @@ function addRouteDirs(directories) {
  * @param route
  */
 function addRoute(route) {
-    app.use(function *(){
+    koaApp.use(function *(){
         this.body = 'Hello World';
     });
 }
@@ -41,5 +40,5 @@ function addRoute(route) {
  * @returns {exports|module.exports}
  */
 function activeApp() {
-    return app;
+    return koaApp;
 }

@@ -7,9 +7,11 @@
 /**
  * Use Koala to provide reasonable features on top of Koa.js, Koala requries Koa.
  */
-var koala = require('koala');
+
+// Koa base components
+const koa = require('koa')
 
 /**
  * Export a Koala app
  */
-exports = module.exports = koala();
+exports = module.exports = koa();

@@ -32,11 +32,22 @@
 
 <body>
 
-<form id="createCL">
-    Password: <input type="text" name="password" value="">
-    <br>
-    Indentifier: <input type="text" name="identifier" value="">
-</form>
+<div id="chainlink_form">
+    <form name="contact" action="">
+        <fieldset>
+            <label for="password" id="name_label">Password</label>
+            <input type="text" name="password" id="password" size="30" value="" class="text-input" />
+            <label class="error" for="password" id="password_error">This field is required.</label>
+
+            <label for="email" id="email_label">Email</label>
+            <input type="text" name="email" id="email" size="30" value="" class="text-input" />
+            <label class="error" for="email" id="email_error">This field is required.</label>
+
+            <br />
+            <input type="submit" name="submit" class="button" id="submit_btn" value="Send" />
+        </fieldset>
+    </form>
+</div>
 
 </body>
 </html>
