@@ -1,0 +1,155 @@
+{
+  "title": "JSON Web Key Schema",
+  "description": "Defines a JSON Web Key (JWT)",
+  "type": "object",
+  "required": ["kty"],
+  "properties": {
+    "oneOf": [
+      { "$ref": "#/definitions/ec256" },
+      { "$ref": "#/definitions/ec512" },
+      { "$ref": "#/definitions/rsa256" },
+      { "$ref": "#/definitions/rsa512" }
+    ]
+  },
+  "definitions": {
+    "ec256": {
+      "title": "EC256 Key",
+      "Description": "256 bit Elliptic Curve key",
+      "type": "object",
+      "required": ["kty"],
+      "properties": {
+        "kty": {
+          "allOff": [
+            { "$ref": "#/definitions/kty" },
+            {
+              "properties": {
+                "type": {  "enum": ["EC"] }
+              }
+            }
+          ]
+        },
+        "key_ops": {
+          "allOff": [
+            { "$ref": "#/definitions/key_ops" }
+          ]
+        },
+        "alg": {
+          "allOff": [
+            { "$ref": "#/definitions/alg" },
+            {
+              "properties": {
+                "type": {  "enum": ["ES256"] }
+              }
+            }
+          ]
+        },
+        "kid": {
+          "allOff": [
+            { "$ref": "#/definitions/kid" }
+          ]
+        },
+        "curve": {
+          "allOff": [
+            { "$ref": "#/definitions/curve" },
+            {
+              "properties": {
+                "type": {  "enum": ["P-256"] }
+              }
+            }
+          ]
+        },
+        "x": {
+          "allOff": [
+            { "$ref": "#/definitions/x" }
+          ]
+        },
+        "y": {
+          "allOff": [
+            { "$ref": "#/definitions/y" }
+          ]
+        }
+      }
+    },
+    "ecKey": {
+      "title": "Elliptic Curve Key",
+      "Description": "Key based off of Elliptic Curve calculation",
+      "type": "object",
+      "required": ["kty"],
+      "properties": {
+        "kty": {
+          "allOff": [
+            { "$ref": "#/definitions/kty" }
+          ]
+        },
+        "key_ops": {
+          "allOff": [
+            { "$ref": "#/definitions/key_ops" }
+          ]
+        },
+        "alg": {
+          "allOff": [
+            { "$ref": "#/definitions/alg" }
+          ]
+        },
+        "kid": {
+          "allOff": [
+            { "$ref": "#/definitions/kid" }
+          ]
+        },
+        "curve": {
+          "allOff": [
+            { "$ref": "#/definitions/curve" }
+          ]
+        },
+        "x": {
+          "allOff": [
+            { "$ref": "#/definitions/x" }
+          ]
+        },
+        "y": {
+          "allOff": [
+            { "$ref": "#/definitions/y" }
+          ]
+        }
+      }
+    },
+    "kty": {
+      "title": "Key Type",
+      "description": "Defines the type of key stored in the object.",
+      "enum": ["EC","RSA"]
+    },
+    "key_ops": {
+      "title": "Key Operations",
+      "description": "The key_ops (key operations) parameter identifies the operation(s) for which the key is intended to be used. The key_ops parameter is intended for use cases in which public, private, or symmetric keys may be present.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "enum": ["sign", "verify", "encrypt", "decrypt", "wrapKey", "unwrapKey", "deriveKey", "deriveBits"] },
+      "uniqueItems": true
+    },
+    "alg": {
+      "title": "Algorithm",
+      "description": "The alg (algorithm) parameter identifies the algorithm intended for use with the key. The values used should either be registered in the IANA 'JSON Web Signature and Encryption Algorithms' registry established by [JWA] or be a value that contains a Collision-Resistant Name. The alg value is a case-sensitive ASCII string.",
+      "enum": ["ES256","ES512","RSA256","RSA512"]
+    },
+    "kid": {
+      "title": "Key ID",
+      "description": "The kid (key ID) parameter is used to match a specific key. When used with JWS or JWE, the kid value is used to match a JWS or JWE kid Header Parameter value.",
+      "type": "string"
+    },
+    "curve": {
+      "title": "Curve",
+      "description": "Used only for Elliptic Curve (EC) keys.",
+      "enum": ["P-256","P-521"]
+    },
+    "x": {
+      "title": "X axis on EC",
+      "description": "X axis on Elliptic Curve used only on EC keys.",
+      "type": "string"
+    },
+    "y": {
+      "title": "Y axis on EC",
+      "description": "Y axis on Elliptic Curve used only on EC keys.",
+      "type": "string"
+    }
+  }
+}

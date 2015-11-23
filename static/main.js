@@ -24,7 +24,6 @@ $(function() {
         var opts = {
             userid: email,
             ecc:    true,
-            ecc:    true,
             primary: {
                 nbits: 384,
                 flags: F.certify_keys | F.sign_data | F.auth | F.encrypt_comm | F.encrypt_storage,
